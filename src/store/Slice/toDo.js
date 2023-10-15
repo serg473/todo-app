@@ -26,6 +26,11 @@ export const toDo = createSlice({
       );
       state.toDoArray[currentIndex] = action.payload;
     },
+    completeTask: (state, action) => {
+      const findTask = state.toDoArray.findIndex((item) => item.id === action.payload.id);
+      state.toDoArray[findTask].isComplete = true;
+      console.log(state.toDoArray[findTask]);
+    },
   },
 });
 
@@ -35,6 +40,7 @@ export const {
   deleteToDoItem,
   collectionDataEditing,
   dataEditingToDoItem,
+  completeTask,
 } = toDo.actions;
 
 export default toDo.reducer;
