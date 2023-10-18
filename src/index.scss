@@ -1,3 +1,6 @@
+body {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
 h1 {
     text-align: center;
     font-size: 65px;
@@ -74,14 +77,18 @@ button {
             sans-serif;
         box-shadow: 0px 0px 3px 0px rgba(34, 60, 80, 0.2);
     }
+    &__name {
+        &.complete {
+            text-decoration: line-through;
+            color: gray;
+        }
+    }
     &__item-group {
         display: flex;
         gap: 8px;
     }
     &__tools-group {
-        padding: 8px 15px;
-        border: 1px solid #e6e6e6;
-        border-radius: 8px;
+        text-align: center;
     }
     &__item-tools {
         display: flex;
@@ -137,4 +144,15 @@ button {
     font-weight: 500;
     line-height: 18.2px;
     margin-top: 10px;
+}
+
+.to-do__filter {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.search__filter{
+    margin-top: 20px;
 }

@@ -1,5 +1,5 @@
 import ToDoItem from "./ToDoItem";
-import NoData from "./NoData";
+import NoData from "../NoData";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { addToDoItem,dataEditingToDoItem } from "../store/Slice/toDo";
+import { addToDoItem,dataEditingToDoItem } from "../../store/Slice/toDo";
 import React from "react";
 import { Formik, Field, Form } from "formik";
 import { useDispatch } from "react-redux";
-import Errors from "./Errors";
+import Errors from "../Errors";
 
 const ToDoModal = (props) => {
   const dispatch = useDispatch();
