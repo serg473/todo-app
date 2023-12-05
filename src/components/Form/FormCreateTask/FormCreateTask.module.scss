@@ -1,0 +1,29 @@
+.form {
+	&__error {
+		color: #d52828;
+		font-weight: 400;
+		font-size: 20px;
+		padding-top: 20px;
+	}
+	&__group {
+		display: flex;
+		flex-direction: column;
+	}
+	&__btn {
+		border-radius: 0px 10px 10px 0px;
+		width: 94px;
+		height: 57px;
+		border: none;
+		font-family: 'Montserrat';
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 400;
+		color: white;
+		line-height: normal;
+		background: #20698c;
+		cursor: pointer;
+	}
+	&__create {
+		display: flex;
+	}
+}
