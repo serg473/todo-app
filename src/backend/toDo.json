@@ -1,9 +1,3 @@
 {
-  "toDo": [
-    {
-      "name": "234234",
-      "completed": false,
-      "id": 1
-    }
-  ]
+  "toDo": []
 }
