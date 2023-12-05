@@ -1,162 +1,51 @@
+@import './assets/Montserrat/Montserrat.css';
+* {
+	box-sizing: border-box;
+}
 body {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+	font-family: 'Montserrat';
+	margin: 0;
+	background: #fcfcfc;
 }
-
-h1 {
-  text-align: center;
-  font-size: 65px;
-  color: #212121;
-  margin: 0 0 30px 0;
-}
-
 input {
-  width: 100%;
-  height: 40px;
-  font-size: 16px;
-  line-height: 18.2px;
-  color: #424242;
-  padding: 0 10px;
-  border-radius: 4px;
-  border: 1px solid #424242;
-  box-sizing: border-box;
+	width: 100%;
+	padding: 0 20px;
+	border-radius: 10px 0px 0px 10px;
+	background: #fff;
+	border: none;
+	box-shadow: 0px 10px 20px 0px rgba(27, 19, 19, 0.25);
+	height: 57px;
+	color: #5a5a5a;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
 }
 input:focus {
-  outline: none;
+	outline: 1px solid #c6c6c6;
+}
+.container {
+	margin: 0 auto;
+	max-width: 650px;
+	padding: 0 15px;
+	margin-top: 75px;
+}
+h1 {
+	color: #374357;
+	text-align: center;
+	font-size: 40px;
+	font-weight: 800;
+	margin-bottom: 20px !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
 }
 
-button {
-  font-family: arial;
-  color: #3d556a;
-  font-size: 15px;
-  text-shadow: 0px 0px 0px #7cacde;
-  box-shadow: 0px 0px 0px #bee2f9;
-  padding: 11px 25px;
-  border-radius: 4px;
-  border: 1px solid #d4d4d4;
-  background: #eeebe4;
-  cursor: pointer;
+.modal-delete {
+	width: 400px;
 }
-button:hover {
-  color: #14396a;
-  background: #ebe6e6;
-}
-
-.label {
-  font-size: 17px;
-  font-weight: 600;
-  line-height: 18.2px;
-  color: #212121;
-  display: block;
-  margin-bottom: 8px;
-}
-
-.to-do__container {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-.to-do__list {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.list {
-  margin-top: 24px;
-}
-.list__group-item {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-.list__item {
-  padding: 10px 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid #e6e6e6;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 18px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  box-shadow: 0px 0px 3px 0px rgba(34, 60, 80, 0.2);
-}
-.list__name.complete {
-  text-decoration: line-through;
-  color: gray;
-}
-.list__item-group {
-  display: flex;
-  gap: 8px;
-}
-.list__tools-group {
-  text-align: center;
-}
-.list__item-tools {
-  display: flex;
-  gap: 15px;
-}
-.list__item-tools svg {
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.modal-window {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  background: rgba(0, 0, 0, 0.4);
-  left: 0;
-  right: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-.modal-window__container {
-  padding: 8px 15px;
-  width: 500px;
-  border-radius: 8px;
-  background: white;
-}
-.modal-window .form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.modal-window .form--block-input {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.modal-window .form--block-button {
-  display: flex;
-  justify-content: space-between;
-}
-.modal-window .form--block-button button {
-  cursor: pointer;
-}
-
-.no-data {
-  text-align: center;
-}
-
-.error {
-  color: red;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 18.2px;
-  margin-top: 10px;
-}
-
-.to-do__filter {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  margin-top: 15px;
-  cursor: pointer;
-}
-
-.search__filter {
-  margin-top: 20px;
-}/*# sourceMappingURL=index.css.map */

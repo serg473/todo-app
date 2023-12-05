@@ -1,48 +1,62 @@
-import { useState } from "react";
-import "./App.css";
-import Button from "./components/Button";
-import ToDoGroup from "./components/ToDoList/ToDoGroup";
-import ToDoModal from "./components/ToDoList/ToDoForm";
-import { collectionDataEditing } from "./store/Slice/toDo";
-import { useDispatch, useSelector } from "react-redux";
-import TodoFilter from "./components/ToDoList/SearchFilter";
+import React, { useState } from 'react'
+import './assets/Montserrat/Montserrat.css'
+import FormCreateTask from './components/Form/FormCreateTask/FormCreateTask'
+import Statistic from './components/Statisctic/Statistic'
+import AppStyle from './App.module.scss'
+import List from './components/List/List'
+import { useDispatch, useSelector } from 'react-redux'
+import { searchTask } from './api/toDo'
+import BaseInput from './components/BaseInput/BaseInput'
+import { setToDo } from './store/reducerTodo'
+import ModalToDo from './components/ModalToDo/ModalToDo'
+import FormEditTask from './components/Form/FormEditTask/FormEditTask'
 
 const App = () => {
-  const [modal, setModal] = useState(false);
-  const [editMode, setEditMode] = useState(false);
-  const dispatch = useDispatch();
-  const editData = useSelector((state) => state.toDo.toDoEdit);
-  const createMode = () => {
-    setEditMode(false);
-    setModal(true);
-  };
-  const EditMode = (value) => {
-    if (value) {
-      dispatch(collectionDataEditing(value));
-      setEditMode(true);
-      setModal(true);
-    }
-  };
-  return (
-    <div className="to-do">
-      <div className="to-do__container">
-        <h1>To-Do List</h1>
-        <div onClick={createMode} className="list__tools-group">
-          <Button title="Добавить" />
-        </div>
-        <div className="to-do__group">
-          <TodoFilter />
-          <div className="to-do__list list">
-            <ToDoGroup editMode={EditMode} />
-          </div>
-        </div>
-      </div>
-      {!editMode && modal && <ToDoModal disableModal={setModal} />}
-      {editMode && modal && (
-        <ToDoModal editData={editData} disableModal={setModal} />
-      )}
-    </div>
-  );
-};
+	const dispatch = useDispatch()
+	const list = useSelector(state => state.toDo.toDoList)
+	const editMode = useSelector(state => state.toDo.editMode)
+	const searchTaskFetch = async e => {
+		try {
+			const fetchApi = await searchTask(e.target.value)
+			return dispatch(setToDo(fetchApi.data))
+		} catch (error) {
+			throw new Error(error)
+		}
+	}
+	return (
+		<div className='container'>
+			<h1>My To-Do List</h1>
+			<main className={AppStyle.main__content}>
+				<FormCreateTask />
+				<div className={AppStyle.main__statistic}>
+					<Statistic />
+				</div>
+				<div className={AppStyle.main__search}>
+					<BaseInput
+						placeholder='Поисковой запрос'
+						callBackEvent={searchTaskFetch}
+						disabled={!list.length}
+					/>
+				</div>
+				<div className={AppStyle.main__list}>
+					<List />
+				</div>
+			</main>
 
-export default App;
+			{editMode && (
+				<ModalToDo>
+					<h2
+						className={AppStyle.main__formTitle}
+					>
+						Форма редактирования
+					</h2>
+					<div className={AppStyle.main__form}>
+						<FormEditTask />
+					</div>
+				</ModalToDo>
+			)}
+		</div>
+	)
+}
+
+export default App
