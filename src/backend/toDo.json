@@ -1,3 +1,9 @@
 {
-  "toDo": []
+  "toDo": [
+    {
+      "name": "Доброе утро",
+      "completed": false,
+      "id": 1
+    }
+  ]
 }
