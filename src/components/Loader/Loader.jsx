@@ -1,4 +1,4 @@
-import Loaders from '../../assets/loader.svg'
+import Loaders from '../../assets/img/loader.svg'
 
 const Loader = () => {
 	return <img src={Loaders} alt='Loader' />

@@ -1,41 +1,32 @@
-import { getTodo } from '../../api/toDo'
-import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { setToDo } from '../../store/reducerTodo'
-import { useSelector } from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import {setToDo} from '../../store/reducerTodo'
 import ListItem from './ListItem'
 import NoTasks from '../NoTask/NoTasks'
 import Loader from '../Loader/Loader'
+import {useFetch} from "../../hooks/useFetch";
+import {useEffect} from "react";
 
 const List = () => {
-	const [loading, setLoading] = useState(false)
-	const toDoList = useSelector(state => state.toDo.toDoList)
-	const dispatch = useDispatch()
-	useEffect(() => {
-		const fetchData = async () => {
-			setLoading(true)
-			try {
-				const fetch = await getTodo()
-				return await dispatch(setToDo(fetch.data))
-			} catch (err) {
-				throw new Error(err)
-			} finally {
-				setLoading(false)
-			}
-		}
-		fetchData()
-	}, [])
+    const {data, loading} = useFetch('http://localhost:3001/toDo')
+    const toDo = useSelector(state => state.toDo.toDoList)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        if (data.length > 0) dispatch(setToDo(data))
+    }, [data])
+    if (loading && data.length === 0) return <Loader/>
 
-	if (loading && toDoList.length === 0) return <Loader />
-	return (
-		<>
-			{!toDoList.length ? (
-				<NoTasks />
-			) : (
-				toDoList.map(toDo => <ListItem key={toDo.id} item={toDo} />)
-			)}
-		</>
-	)
+    return (
+        <>
+            <div>
+                {!toDo.length ? (
+                    <NoTasks />
+                ) : (
+                    toDo.map(toDo => <ListItem key={toDo.id} item={toDo} />)
+                )}
+
+            </div>
+        </>
+    )
 }
 
 export default List

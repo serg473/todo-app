@@ -1,3 +1,14 @@
 {
-  "toDo": []
+  "toDo": [
+    {
+      "name": "Купить молока",
+      "completed": false,
+      "id": 1
+    },
+    {
+      "name": "Купить хлеба",
+      "completed": false,
+      "id": 2
+    }
+  ]
 }
